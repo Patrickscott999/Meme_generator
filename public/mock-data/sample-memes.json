@@ -1,0 +1,30 @@
+[
+  {
+    "id": "mock-1",
+    "prompt": "A cat wearing sunglasses on a beach",
+    "imageData": "",
+    "createdAt": "2025-06-04T12:00:00.000Z",
+    "caption": "BEACH DAY? PURR-FECT!",
+    "textSettings": {
+      "font": "Impact",
+      "color": "#ffffff",
+      "strokeColor": "#000000",
+      "size": "36px",
+      "position": { "x": 50, "y": 85 }
+    }
+  },
+  {
+    "id": "mock-2",
+    "prompt": "A dog confused by technology",
+    "imageData": "",
+    "createdAt": "2025-06-03T14:30:00.000Z",
+    "caption": "WHEN THEY ASK IF I UNDERSTAND THE CODE I WROTE",
+    "textSettings": {
+      "font": "Impact",
+      "color": "#ffffff",
+      "strokeColor": "#000000",
+      "size": "32px",
+      "position": { "x": 50, "y": 20 }
+    }
+  }
+]

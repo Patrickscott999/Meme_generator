@@ -1,0 +1,15 @@
+{
+  "name": "meme-generator",
+  "version": "1.0.0",
+  "description": "Vanilla JavaScript Meme Generator using OpenAI",
+  "scripts": {
+    "start": "live-server --port=8080 --entry-file=index.html",
+    "build": "mkdir -p dist && cp -R index.html src public dist/",
+    "lint": "eslint src/js/**/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "eslint": "^8.36.0",
+    "live-server": "^1.2.2"
+  }
+}

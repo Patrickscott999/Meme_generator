@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meme Generator</title>
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="src/css/main.css">
+  <link rel="stylesheet" href="src/css/components.css">
+  <link rel="stylesheet" href="src/css/responsive.css">
+</head>
+<body>
+  <header>
+    <div class="logo">MemeGen AI</div>
+    <nav id="main-nav">
+      <button data-view="home" class="nav-item active">Gallery</button>
+      <button data-view="create" class="nav-item">Create</button>
+      <button data-view="settings" class="nav-item">Settings</button>
+    </nav>
+  </header>
+
+  <main id="app">
+    <!-- View content will be rendered here -->
+    <div id="loading" class="hidden">
+      <div class="spinner"></div>
+      <p>Generating your meme...</p>
+    </div>
+  </main>
+
+  <div id="toast-container"></div>
+
+  <footer>
+    <p>Built with ❤️ and OpenAI</p>
+  </footer>
+
+  <script type="module" src="src/js/app.js"></script>
+</body>
+</html>

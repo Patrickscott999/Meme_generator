@@ -1,0 +1,63 @@
+/* Main CSS file for MemeGen AI */
+:root {
+  --primary-color: #4a6bff;
+  --secondary-color: #ff4a8d;
+  --text-color: #333333;
+  --background-color: #f9f9f9;
+  --card-bg-color: #ffffff;
+  --border-color: #e0e0e0;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --font-family: 'Roboto', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color: var(--card-bg-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+footer {
+  padding: 1rem;
+  text-align: center;
+  background-color: var(--card-bg-color);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Hidden Class */
+.hidden {
+  display: none !important;
+}
