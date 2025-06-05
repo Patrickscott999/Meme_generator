@@ -18,7 +18,7 @@ const API = {
     State.set('isGenerating', true);
     
     try {
-      const response = await fetch('https://api.openai.com/v1/responses', {
+      const response = await fetch('https://api.openai.com/v1/images/generations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

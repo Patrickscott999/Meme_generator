@@ -22,6 +22,26 @@ document.addEventListener('DOMContentLoaded', () => {
   // Setup navigation
   setupNavigation();
   
+  // Initialize with default preferences if none exists
+  let preferences = State.get('userPreferences');
+  if (!preferences) {
+    // Set default preferences
+    preferences = {
+      defaultFont: 'Arial, sans-serif',
+      defaultColor: '#ffffff',
+      defaultStrokeColor: '#000000',
+      apiKey: ''
+    };
+    State.set('userPreferences', preferences);
+  }
+  
+  // Check if API key is set
+  if (!preferences.apiKey) {
+    // Show API key setup instructions first
+    showApiKeyInstructions();
+    return;
+  }
+  
   // Set initial view based on URL hash or default to home
   const initialView = window.location.hash.substring(1) || 'home';
   navigateTo(initialView);
@@ -141,6 +161,68 @@ function renderSettingsView() {
   
   // Initialize settings
   Settings.init(container);
+}
+
+// Show API key setup instructions
+function showApiKeyInstructions() {
+  // Clear app container
+  while (appContainer.firstChild) {
+    if (!appContainer.firstChild.id || appContainer.firstChild.id !== 'loading') {
+      appContainer.removeChild(appContainer.firstChild);
+    }
+  }
+  
+  const setupContainer = document.createElement('div');
+  setupContainer.className = 'setup-container card';
+  setupContainer.style.padding = '2rem';
+  setupContainer.style.margin = '2rem auto';
+  setupContainer.style.maxWidth = '600px';
+  
+  const header = document.createElement('h2');
+  header.textContent = 'Welcome to MemeGen AI!';
+  
+  const instruction = document.createElement('p');
+  instruction.innerHTML = 'To get started, you need to add your OpenAI API key. This key will be stored locally in your browser and never sent to our servers.';
+  
+  const apiKeyInput = Components.input('password', 'apiKey', 'Enter your OpenAI API key');
+  const apiKeyGroup = Components.formGroup('OpenAI API Key', apiKeyInput);
+  
+  const saveButton = Components.button('Save API Key', 'btn btn-primary', () => {
+    const apiKey = apiKeyInput.value.trim();
+    if (!apiKey) {
+      Components.toast('Please enter a valid API key', 'error');
+      return;
+    }
+    
+    // Save API key
+    const preferences = State.get('userPreferences');
+    preferences.apiKey = apiKey;
+    State.set('userPreferences', preferences);
+    
+    // Redirect to home
+    window.location.hash = 'home';
+    navigateTo('home');
+    Components.toast('API key saved successfully!', 'success');
+  });
+  
+  const skipButton = Components.button('Skip (Demo Mode)', 'btn', () => {
+    Components.toast('Running in demo mode. API features will not work.', 'error');
+    window.location.hash = 'home';
+    navigateTo('home');
+  });
+  skipButton.style.marginLeft = '1rem';
+  
+  const buttonGroup = document.createElement('div');
+  buttonGroup.style.marginTop = '1.5rem';
+  buttonGroup.appendChild(saveButton);
+  buttonGroup.appendChild(skipButton);
+  
+  setupContainer.appendChild(header);
+  setupContainer.appendChild(instruction);
+  setupContainer.appendChild(apiKeyGroup);
+  setupContainer.appendChild(buttonGroup);
+  
+  appContainer.appendChild(setupContainer);
 }
 
 // Handle sharing a meme
